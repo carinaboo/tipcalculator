@@ -17,18 +17,17 @@ The following **optional** features are implemented:
 * [ ] UI animations
 * [ ] Remembering the bill amount across app restarts (if <10mins)
 * [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 * [x] Make UI pretty.
 * [ ] Remember default tip percentage across app restarts.
-* [ ] List anything else that you can get done to improve the app functionality!
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://raw.githubusercontent.com/carinaboo/tipcalculator/master/Demo/TippyV1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://raw.githubusercontent.com/carinaboo/tipcalculator/master/Demo/TippyV2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

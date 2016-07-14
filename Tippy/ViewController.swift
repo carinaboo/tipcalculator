@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
+        billField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onTap(sender: AnyObject) {
-        view.endEditing(true)
+//        view.endEditing(true)
     }
 
     @IBAction func calculateTip(sender: AnyObject) {
