@@ -4,7 +4,7 @@ Tippy is a tip calculator application for iOS.
 
 Submitted by: Carina Boo
 
-Time spent: **X** hours spent in total
+Time spent: **1.5** hours spent on required features. **2** hours in total.
 
 ## User Stories
 
@@ -34,6 +34,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+Figuring out how to handle transitioning between scenes, exiting a scene to go back to a previous scene. Also learning how to use delegates to have a view controller handle user actions taken on a different view controller.
 
 ## License
 
