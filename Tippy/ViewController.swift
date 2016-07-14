@@ -15,16 +15,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipPercentageControl: UISegmentedControl!
     
-    let tipPercentages = [0.18, 0.20, 0.25]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowSettings") {
+            let viewController = segue.destinationViewController as! SettingsViewController
+            viewController.delegate = self
+        }
     }
 
     @IBAction func onTap(sender: AnyObject) {
@@ -32,11 +38,25 @@ class ViewController: UIViewController {
     }
 
     @IBAction func calculateTip(sender: AnyObject) {
+        calculateTip()
+    }
+    
+    func calculateTip() {
         let bill = Double(billField.text!) ?? 0
         let tip = bill * tipPercentages[tipPercentageControl.selectedSegmentIndex]
         let total = bill + tip
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
+    }
+    
+    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
+    }
+}
+
+extension ViewController: SettingsViewControllerDelegate {
+    func updateDefaultTipPercentage(sender: SettingsViewController) {
+        tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
+        calculateTip()
     }
 }
 

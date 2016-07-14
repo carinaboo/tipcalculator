@@ -40,6 +40,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
+                                    <action selector="calculateTip" destination="BYZ-38-t0r" eventType="editingChanged" id="9O9-9n-9vd"/>
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="kdN-Cf-DeS"/>
                                 </connections>
                             </textField>
@@ -84,7 +85,13 @@
                             <outletCollection property="gestureRecognizers" destination="S4G-si-kWk" appends="YES" id="1qA-Qu-00o"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tippy" id="wwi-PY-W8Q"/>
+                    <navigationItem key="navigationItem" title="Tippy" id="wwi-PY-W8Q">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="AfZ-Xg-W9U">
+                            <connections>
+                                <segue destination="EPE-EB-8oS" kind="push" identifier="ShowSettings" id="tio-Vh-pei"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billField" destination="mfs-n0-5L2" id="Aoy-NO-0kJ"/>
                         <outlet property="tipLabel" destination="mAy-yn-KYI" id="DGF-rU-skJ"/>
@@ -100,6 +107,54 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="732" y="230"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="hJu-nD-3bY">
+            <objects>
+                <viewController id="EPE-EB-8oS" customClass="SettingsViewController" customModule="Tippy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h8t-Zx-NAg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DwS-3V-CL4">
+                                <rect key="frame" x="20" y="95" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="bu0-of-i0h">
+                                <rect key="frame" x="20" y="129" width="280" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="18%"/>
+                                    <segment title="20%"/>
+                                    <segment title="25%"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.26714796219999998" blue="0.34709979200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="setDefaultTipPercentage:" destination="EPE-EB-8oS" eventType="valueChanged" id="vPR-Ew-Xn4"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="uKX-Jq-ykP">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="VUA-tu-EBk">
+                            <color key="tintColor" red="1" green="0.26714796219999998" blue="0.34709979200000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="G5g-IM-0kf" kind="unwind" unwindAction="unwindToMain:" id="Gmi-NT-tBu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="defaultTipPercentageControl" destination="bu0-of-i0h" id="RX9-WL-mWh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rRa-iv-t24" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="G5g-IM-0kf" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1705" y="230"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W61-OA-kT3">
@@ -119,5 +174,26 @@
             </objects>
             <point key="canvasLocation" x="200" y="230"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xp8-jJ-JKh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gCW-df-LnH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ss6-PP-9EL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EPE-EB-8oS" kind="relationship" relationship="rootViewController" id="2WE-HH-81v"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKC-zh-FeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1173" y="230"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tio-Vh-pei"/>
+    </inferredMetricsTieBreakers>
 </document>
