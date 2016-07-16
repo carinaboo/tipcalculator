@@ -17,7 +17,9 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        defaultTipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
+        if let defaultTipPercentageIndex: Int = defaults.integerForKey(tipPercentageIndexKey) {
+            defaultTipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,7 +28,8 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func setDefaultTipPercentage(sender: AnyObject) {
-        defaultTipPercentageIndex = defaultTipPercentageControl.selectedSegmentIndex
+        let defaultTipPercentageIndex = defaultTipPercentageControl.selectedSegmentIndex
+        defaults.setObject(defaultTipPercentageIndex, forKey: tipPercentageIndexKey)
         if (delegate != nil) {
             delegate!.updateDefaultTipPercentage(self)
         }

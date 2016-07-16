@@ -9,4 +9,12 @@
 import Foundation
 
 let tipPercentages = [0.18, 0.20, 0.25]
-var defaultTipPercentageIndex = 0
+
+// MARK: NSUserDefaults and keys
+// For persistent global variables across app startups.
+
+// Defaults object used to grab user default values
+let defaults = NSUserDefaults.standardUserDefaults()
+
+// Default tip percentage index
+let tipPercentageIndexKey = "tipPercentageIndex"

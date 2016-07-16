@@ -18,7 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
+        if let defaultTipPercentageIndex: Int = defaults.integerForKey(tipPercentageIndexKey) {
+            tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
+        }
         billField.becomeFirstResponder()
     }
 
@@ -56,7 +58,9 @@ class ViewController: UIViewController {
 
 extension ViewController: SettingsViewControllerDelegate {
     func updateDefaultTipPercentage(sender: SettingsViewController) {
-        tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
+        if let defaultTipPercentageIndex: Int = defaults.integerForKey(tipPercentageIndexKey) {
+            tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
+        }
         calculateTip()
     }
 }
