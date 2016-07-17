@@ -21,6 +21,19 @@ class ViewController: UIViewController {
         if let defaultTipPercentageIndex: Int = defaults.integerForKey(tipPercentageIndexKey) {
             tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
         }
+        if let lastBillDate = defaults.objectForKey(lastBillDateKey) {
+            let interval = (lastBillDate as! NSDate).timeIntervalSinceNow
+            let minutesSinceLastBill = floor(-interval/60)
+            if minutesSinceLastBill < 10 {
+                if let lastBill: Double = defaults.doubleForKey(lastBillKey) {
+                    billField.text = String(format: "%.2f", lastBill)
+                    calculateTip()
+                }
+            } else {
+                defaults.setDouble(0, forKey: lastBillKey)
+                defaults.setObject(nil, forKey: lastBillDateKey)
+            }
+        }
         billField.becomeFirstResponder()
     }
 
@@ -41,6 +54,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func calculateTip(sender: AnyObject) {
+        let lastBill = Double(billField.text!) ?? 0
+        let lastBillDate = NSDate()
+        defaults.setDouble(lastBill, forKey: lastBillKey)
+        defaults.setObject(lastBillDate, forKey: lastBillDateKey)
         calculateTip()
     }
     

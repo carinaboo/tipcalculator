@@ -16,5 +16,11 @@ let tipPercentages = [0.18, 0.20, 0.25]
 // Defaults object used to grab user default values
 let defaults = NSUserDefaults.standardUserDefaults()
 
-// Default tip percentage index
+// Default tip percentage index. Integer.
 let tipPercentageIndexKey = "tipPercentageIndex"
+
+// Most recent calculated bill. Shows in app for 10 min, or until new calculation. Double.
+let lastBillKey = "recentBill"
+
+// Datetime when the most recent bill was calculated. NSDate.
+let lastBillDateKey = "recentBillDate"
