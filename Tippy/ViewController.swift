@@ -65,8 +65,14 @@ class ViewController: UIViewController {
         let bill = Double(billField.text!) ?? 0
         let tip = bill * tipPercentages[tipPercentageControl.selectedSegmentIndex]
         let total = bill + tip
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        // Format tip and total in locale currency.
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = NSLocale.currentLocale()
+        let tipString = formatter.stringFromNumber(tip)
+        let totalString = formatter.stringFromNumber(total)
+        tipLabel.text = tipString
+        totalLabel.text = totalString
     }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
