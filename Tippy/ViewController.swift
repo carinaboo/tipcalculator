@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         if let defaultTipPercentageIndex: Int = defaults.integerForKey(tipPercentageIndexKey) {
             tipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
         }
+        setTipAndTotal(0, total: 0)
         if let lastBillDate = defaults.objectForKey(lastBillDateKey) {
             let interval = (lastBillDate as! NSDate).timeIntervalSinceNow
             let minutesSinceLastBill = floor(-interval/60)
@@ -60,12 +61,16 @@ class ViewController: UIViewController {
         defaults.setObject(lastBillDate, forKey: lastBillDateKey)
         calculateTip()
     }
-    
+
     func calculateTip() {
         let bill = Double(billField.text!) ?? 0
         let tip = bill * tipPercentages[tipPercentageControl.selectedSegmentIndex]
         let total = bill + tip
-        // Format tip and total in locale currency.
+        setTipAndTotal(tip, total: total)
+    }
+
+    // Sets the tip and total fields using user's current locale.
+    func setTipAndTotal(tip: Double, total: Double) {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = .CurrencyStyle
         formatter.locale = NSLocale.currentLocale()
