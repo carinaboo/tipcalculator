@@ -17,6 +17,11 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // Set background color of navigation bar
+        navigationController?.navigationBar.barTintColor = UIColor(red: 243.0/255.0, green: 243.0/255.0, blue: 243.0/255.0, alpha: 1.0)
+        navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 109.0/255.0, green: 115.0/255.0, blue: 127.0/255.0, alpha: 1.0)]
+
+        // Set default tip
         if let defaultTipPercentageIndex: Int = defaults.integerForKey(tipPercentageIndexKey) {
             defaultTipPercentageControl.selectedSegmentIndex = defaultTipPercentageIndex
         }
